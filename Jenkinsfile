@@ -7,14 +7,14 @@ pipeline{
         stage ('Clean WorkSpace Directory'){
             steps {
                 //define the single or multiple step
-                bat 'echo CleanUp Stage'
+                sh 'echo CleanUp Stage'
                 cleanWs notFailBuild: true
             }
         }
         stage ('Git CheckOut'){
             steps {
                //define the single or multiple step
-                bat 'echo Git Checkout'
+                sh 'echo Git Checkout'
                 checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/jyothi575/KarateJenkinsTutorial.git']]])
             }
             
@@ -22,27 +22,27 @@ pipeline{
         stage ('Restore Packages'){
             steps {
                 //define the single or multiple step
-                bat 'echo Restore Package'
+                sh 'echo Restore Package'
             }
         }
         stage ('Build'){
             steps {
                //define the single or multiple step
-                bat 'echo Build'
-                bat 'mvn clean compile'
+                sh 'echo Build'
+                sh 'mvn clean compile'
                 
             }
         }
         stage ('Deploy'){
             steps {
-                bat 'echo Deploying the application..'
+                sh 'echo Deploying the application..'
             }
         }
         stage ('Run the Test') {
             steps {
                  //define the single or multiple step
-                bat 'echo Test Execution Started'
-//                 bat 'mvn -P %Environment% test'
+                sh 'echo Test Execution Started'
+//                 sh 'mvn -P %Environment% test'
             }
         }
     }
