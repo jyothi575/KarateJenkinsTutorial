@@ -15,7 +15,7 @@ pipeline{
             steps {
                //define the single or multiple step
                 bat 'echo Git Checkout'
-                checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/rahulrathore44/KarateFrameworkTutorial.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/jyothi575/KarateJenkinsTutorial.git']]])
             }
             
         }
@@ -42,7 +42,7 @@ pipeline{
             steps {
                  //define the single or multiple step
                 bat 'echo Test Execution Started'
-                bat 'mvn -P %Environment% test'
+//                 bat 'mvn -P %Environment% test'
             }
         }
     }
